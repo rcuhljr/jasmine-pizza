@@ -41,7 +41,7 @@ describe("Pizza", function() {
     });
   });
 
-  describe("foo", function() {
+  describe("styles", function() {
     it("should give a choice of styles", function() {
       expect(pizza.getStyles()).toContain("meat lovers");
       expect(pizza.getStyles()).toContain("veg head");
