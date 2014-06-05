@@ -42,6 +42,36 @@ function Pizza() {
     });
   }
 
+
+  this.orderSuccess = function (){
+    orderSuccess = true;
+  }
+
+  this.orderFailed = function (){
+    orderSuccess = false;
+  }
+
+  this.loadToppings = function (data){
+    toppings = data;
+  }
+
+  this.sendOrderAlt = function() {    
+    $.ajax({
+      type: "POST",
+      url: "http://onlinepizza.se/api/rest?order.send",
+      success: this.orderSucceeded,
+      error: this.orderFailed
+    });
+  }
+
+  this.getStoredToppings = function() {
+    $.ajax({
+      type: "GET",
+      url: "http://onlinepizza.se/api/rest?cart.show",
+      success: this.loadToppings      
+    });
+  }
+
   this.orderSent = function() {
     return orderSuccess;
   }
